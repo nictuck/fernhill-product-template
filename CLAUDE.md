@@ -11,9 +11,13 @@ README). The spec you build against is
   Healthy output ends with `check: ok`.
 - `make build` / `make test` / `make lint` — individually.
 - `make dev` — run locally.
-- Rollback (production): `netlify rollback` is done by the release manager
-  from the Netlify UI (Deploys → previous deploy → Publish). Document the
-  exact steps here after the first release rehearsal in staging.
+- Staging: `https://main--{{SITE}}.netlify.app` (every merge). Production:
+  `https://{{SITE}}.netlify.app` (the `production` branch, moved by the
+  `release` workflow after the release manager approves).
+- Rollback: fast — release manager publishes a previous deploy in Netlify
+  (Deploys → pick one → Publish deploy); durable — revert PR on `main`,
+  released through the gate. Rehearse the fast path in staging before the
+  first release and note the result here.
 
 Until the first plan configures the stack, these targets print TODO and
 pass. Configuring them is step one of the first plan.
@@ -31,8 +35,9 @@ pass. Configuring them is step one of the first plan.
   are blocked unless the message says `plan-unchanged` (hook).
 - Branch per plan: `build/{{INTENT}}-<slug>`. One PR per plan.
 - Tests prove requirements: name tests after the spec's `R1..Rn`.
-- Never push to `main`, merge, approve or deploy to production. Hooks block
-  it; the code owner and release manager do those in GitHub.
+- Never push to `main` or `production`, merge, approve, or start a
+  `release` run. Hooks block it; the code owner and release manager do
+  those in GitHub.
 - Secrets only in GitHub Actions secrets / Netlify env vars. Never in the
   repo, never in a transcript.
 - Keep this file under a page. Add a line under "Things Claude gets wrong"

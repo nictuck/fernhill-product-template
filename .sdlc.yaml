@@ -4,6 +4,7 @@ company: Fernhill Software
 platform_repo: nictuck/fernhill-platform
 platform_path: ../../fernhill-platform     # local clone, relative to this repo
 product: "{{SLUG}}"
+netlify_site: "{{SITE}}"                    # https://<site>.netlify.app; main--<site> is staging
 intents: ["{{INTENT}}"]
 created: "{{DATE}}"
 stack: ""                                   # set by the first plan, e.g. "vite+react"
