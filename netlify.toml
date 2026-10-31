@@ -1,0 +1,12 @@
+[build]
+  command = "make build"
+  publish = "dist"
+
+[context.production]
+  environment = { SDLC_ENV = "production" }
+
+[context.branch-deploy]
+  environment = { SDLC_ENV = "staging" }
+
+[context.deploy-preview]
+  environment = { SDLC_ENV = "preview" }
