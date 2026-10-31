@@ -20,7 +20,10 @@ README). The spec you build against is
   first release and note the result here.
 
 Until the first plan configures the stack, these targets print TODO and
-pass. Configuring them is step one of the first plan.
+pass. Configuring them is step one of the first plan. The publish
+directory is named in three places that move together: `netlify.toml`
+(`publish` and the `version.txt` path in `command`) and `.sdlc.yaml`
+(`publish_dir`).
 
 ## Stage skills
 
