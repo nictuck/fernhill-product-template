@@ -31,7 +31,6 @@
       "Read(~/.ssh/**)",
       "Read(~/.aws/**)",
       "Read(~/.netlify/**)",
-      "Bash(gh pr merge*)",
       "Bash(gh pr review * --approve*)",
       "Bash(netlify deploy * --prod*)"
     ]
@@ -61,6 +60,15 @@
           {
             "type": "command",
             "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/protect-tests.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__.*netlify-deploy-services-updater.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/production-gate.sh"
           }
         ]
       }
