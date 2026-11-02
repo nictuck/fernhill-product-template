@@ -16,8 +16,12 @@ README). The spec you build against is
   `release` workflow after the release manager approves).
 - Rollback: fast — release manager publishes a previous deploy in Netlify
   (Deploys → pick one → Publish deploy); durable — revert PR on `main`,
-  released through the gate. Rehearse the fast path in staging before the
-  first release and note the result here.
+  released through the gate. The release manager rehearses the fast path
+  in Netlify, on production, against the previous real deploy (branch
+  deploys have no publish pointer, so staging cannot rehearse it), in a
+  quiet window with no `release` run in progress: publish it, confirm
+  `version.txt`, re-publish the current deploy, and note the result here.
+  Not yet rehearsed.
 
 Until the first plan configures the stack, these targets print TODO and
 pass. Configuring them is step one of the first plan. The publish
